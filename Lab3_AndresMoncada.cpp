@@ -1,21 +1,20 @@
-#include<iostream>;
-#include<c.math>;
-#include<math.h>;
+#include<iostream>
+#include<math.h>
 #define PI 3.14159265
 
 using std::cin;
 using std::cout;
 using std::endl;
 
-boolean primo(int n){
-	boolean p = true;
+bool primo(int n){
+	bool p = true;
 	for (int i = 2; i < n; i++){
 		if (n % i == 0)
 			p = false;
 	}
 	return p;
 }
-cuadrados (int n){
+void cubos (int n){
 	int imp = -1;
 	for (int i = 1; i <= n; i++){
 		cout << i << "³ = ";
@@ -28,7 +27,7 @@ cuadrados (int n){
 		cout << "= " << (i*i*i) << endl;
 	}
 }
-triangulo (double a, double b, double c){
+void triangulo (double a, double b, double c){
 	if(a+b > c && b+c > a && a+c > b){
 		double h=0, c1=0, c2=0;//hipotenusa y catetos
 		double a1=0, a2=0, a3=0; //ángulos
@@ -64,9 +63,25 @@ triangulo (double a, double b, double c){
 			arad = acos((a*a + b*b - c*c)/(2*a*b));//ángulo opuesto a c
 			a3 = arad * 180/PI;
 			a1 = asin(a*sin(arad)/c) *180/PI;
-			a3 = asin(b*sin(arad)/c) *180/PI;
+			a2 = asin(b*sin(arad)/c) *180/PI;
 			cout << "Ángulos: " << a1 << ", " << a2 << ", " << a3 << endl;
 			cout << "Área: " << area << endl;
 		}
 	}else
 		cout << "Los lados no forman un triángulo" << endl;
+}
+main(){
+	int op = 0;
+	do{
+		cout << "Ingrese una opción: ";
+		cin >> op;
+		switch(op){
+			case 1: cubos(4);
+				break;
+			case 2: triangulo(1,1,4);
+				triangulo(3,5,4);
+				triangulo(6,6,7);
+				break;
+		}
+	}while(op != 0);
+}
