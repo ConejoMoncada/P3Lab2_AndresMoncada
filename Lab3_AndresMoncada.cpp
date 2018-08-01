@@ -32,6 +32,7 @@ triangulo (double a, double b, double c){
 	if(a+b > c && b+c > a && a+c > b){
 		double h=0, c1=0, c2=0;//hipotenusa y catetos
 		double a1=0, a2=0, a3=0; //ángulos
+		double arad; //uno de los tres ángulos en radianes
 		double s, area;
 		if(sqrt(a*a+b*b) == c || sqrt(b*b+c*c) == a || sqrt(a*a+c*c) == b){
 			cout << "Es un triángulo rectángulo" << endl;
@@ -57,5 +58,15 @@ triangulo (double a, double b, double c){
 			cout << "Ángulos: " << a1 << ", " << a2 << ", " << a3 << endl;
 			cout << "Área: " << area << endl;
 		}else{
+			cout << "No es triángulo rectángulo" << endl;
 			s = (a+b+c)/2;
 			area = sqrt(s*(s-a)*(s-b)*(s-c));
+			arad = acos((a*a + b*b - c*c)/(2*a*b));//ángulo opuesto a c
+			a3 = arad * 180/PI;
+			a1 = asin(a*sin(arad)/c) *180/PI;
+			a3 = asin(b*sin(arad)/c) *180/PI;
+			cout << "Ángulos: " << a1 << ", " << a2 << ", " << a3 << endl;
+			cout << "Área: " << area << endl;
+		}
+	}else
+		cout << "Los lados no forman un triángulo" << endl;
