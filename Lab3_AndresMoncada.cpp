@@ -18,4 +18,11 @@ cuadrados (int n){
 	for (int i = 1; i <= n; i++){
 		cout << i << "³ = ";
 		for (int j = 0; j < i; j++){
-
+			imp += 2;
+			cout << imp << " ";
+			if( j != i -1)
+				cout << "+ ";
+		}
+		cout << "= " << (i*i*i) << endl;
+	}
+}
