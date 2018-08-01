@@ -14,6 +14,7 @@ bool primo(int n){
 	}
 	return p;
 }
+
 void cubos (int n){
 	int imp = -1;
 	for (int i = 1; i <= n; i++){
@@ -27,6 +28,7 @@ void cubos (int n){
 		cout << "= " << (i*i*i) << endl;
 	}
 }
+
 void triangulo (double a, double b, double c){
 	if(a+b > c && b+c > a && a+c > b){
 		double h=0, c1=0, c2=0;//hipotenusa y catetos
@@ -70,18 +72,57 @@ void triangulo (double a, double b, double c){
 	}else
 		cout << "Los lados no forman un triángulo" << endl;
 }
+
+void sumprimos(int n){
+	int suma = 0;
+	int d = 1;
+	cout << "suma: ";
+	for (int i = 1; i <= n; i++){
+		if (n % i == 0){
+			d = i;
+			if(primo((d+n)/d)){
+				suma += (d+n)/d;
+				cout << "(" << d << "+" << n << ")/" << d << " ";
+				if (d != n)
+					cout << "+ ";
+			}
+		}
+	}	
+	cout << "= " << suma << endl;
+}
+
 main(){
 	int op = 0;
 	do{
+		cout << "1. Cubos" << endl << "2. Triángulo" << endl << "3. Suma de Primos" << endl;
+		cout << "0. Salir" << endl;
 		cout << "Ingrese una opción: ";
 		cin >> op;
 		switch(op){
-			case 1: cubos(4);
-				break;
-			case 2: triangulo(1,1,4);
-				triangulo(3,5,4);
-				triangulo(6,6,7);
-				break;
+			case 1: {
+					int n = 0;
+					cout << "Ingrese la cantidad de cubos que quiere ver: ";
+					cin >> n;
+					cubos(n);
+					break;
+				}
+			case 2: {	double a = 0, b = 0, c = 0;
+					cout << "Ingrese un lado: ";
+					cin >> a;
+					cout << "Ingrese otro lado: ";
+					cin >> b;
+					cout << "Ingrese otro lado: ";
+					cin >> c;
+					triangulo(a,b,c);
+					break;
+				}
+			case 3: {
+					int n = 0;
+					cout << "Ingrese un número a probar: ";
+					cin >> n;
+					sumprimos(n);
+					break;
+				}
 		}
 	}while(op != 0);
 }
