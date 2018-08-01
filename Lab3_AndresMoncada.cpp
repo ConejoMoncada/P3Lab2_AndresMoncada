@@ -1,5 +1,7 @@
 #include<iostream>;
 #include<c.math>;
+#include<math.h>;
+#define PI 3.14159265
 
 using std::cin;
 using std::cout;
@@ -26,3 +28,34 @@ cuadrados (int n){
 		cout << "= " << (i*i*i) << endl;
 	}
 }
+triangulo (double a, double b, double c){
+	if(a+b > c && b+c > a && a+c > b){
+		double h=0, c1=0, c2=0;//hipotenusa y catetos
+		double a1=0, a2=0, a3=0; //ángulos
+		double s, area;
+		if(sqrt(a*a+b*b) == c || sqrt(b*b+c*c) == a || sqrt(a*a+c*c) == b){
+			cout << "Es un triángulo rectángulo" << endl;
+			if (a>h){
+				h = a;
+				c1 = b;
+				c2 = c;
+			}
+			if (b>h){
+				h = b;
+				c1 = a;
+				c2 = c;
+			}
+			if (c>h){
+				h = c;
+				c1 = b;
+				c2 = a;
+			}
+			a1 = 90.0;
+			a2 = asin(c1/h)*180/PI;
+			a3 = asin(c2/h)*180/PI;
+			area = c1*c2/2;
+			cout << "Ángulos: " << a1 << ", " << a2 << ", " << a3 << endl;
+			cout << "Área: " << area << endl;
+		}else{
+			s = (a+b+c)/2;
+			area = sqrt(s*(s-a)*(s-b)*(s-c));
